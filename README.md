@@ -110,7 +110,7 @@ public VirtualThreadExecutor(String namePrefix) {
 ## 테스트 시나리오
 - Spring Web MVC서버의 API 호출, [MvcApplication.java](mvc/src/main/java/org/example/mvc/MvcApplication.java)
   - 외부 서버에 2번 호출 이후 DB에 저장
-  - 순간 강한 부하를 주어 응답속도를 비
+  - 순간 강한 부하를 주어 응답속도를 비교
 
 ## 테스트 환경 구성
 - Java 21 사용!
@@ -118,6 +118,9 @@ public VirtualThreadExecutor(String namePrefix) {
 - 외부 서버 띄우기
 ```bash
 ./gradlew :external:bootRun
+
+# 서버 올라갔는지 확인
+curltime  -X GET http://localhost:19101?delay=1000
 ```
 
 - mvc 서버 띄우기, Virtual Thread X
@@ -180,7 +183,11 @@ go install github.com/americanexpress/baton@latest
 ```
 - OS 환경변수의 PATH에 go의 bin(/Users/user/go/bin)의 path 추가 
   - go의 bin path는 `go env` 로 `$GOPATH` 확인 후, 들어가서 내부 bin 폴더 있는지 확인
-  
+
+```bash
+# 설치 완료 후 테스트
+baton -m GET -u https://www.naver.com -c 1 -r 10
+```
 
 # Reference
 - https://techblog.woowahan.com/15398/
