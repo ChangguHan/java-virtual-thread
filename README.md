@@ -130,7 +130,6 @@ curltime  -X GET http://localhost:19101?delay=1000
 # 서버 올라갔는지 확인
 curltime  -X GET http://localhost:19001?delay=1000
 ```
-포트 별도로 띄우자
 
 - mvc 서버 띄우기, Virtual Thread O
 ```bash
