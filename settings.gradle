@@ -1,0 +1,3 @@
+rootProject.name = 'java-virtual-thread'
+include ':mvc', ':external'
+

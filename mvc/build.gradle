@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("com.h2database:h2")
+}
+
+bootRun {
+    maxHeapSize = "1024m"
+    minHeapSize = "1024m"
+    systemProperty "spring.threads.virtual.enabled", System.properties['spring.threads.virtual.enabled']
+    systemProperty "server.port", System.properties['server.port']
+}
